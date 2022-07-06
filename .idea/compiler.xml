@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="1.7">
+      <module name="Clean_Architecture_Course.app" target="11" />
+      <module name="Clean_Architecture_Course.data" target="11" />
+      <module name="Clean_L1.app" target="11" />
+      <module name="Clean_L1.data" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
