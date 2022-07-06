@@ -13,17 +13,16 @@ import com.greemoid.cleanl1.data.storage.sharedprefs.SharedPrefUserStorage
 import com.greemoid.cleanl1.domain.models.SaveUserNameParams
 import com.greemoid.cleanl1.domain.usecases.GetUserName
 import com.greemoid.cleanl1.domain.usecases.SaveUserName
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: MainViewModel
+    private val viewModel by viewModel<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Log.d("VM", "Activity created")
-        viewModel = ViewModelProvider(this, MainViewModelFactory(this))
-            .get(MainViewModel::class.java)
 
         val tvData = findViewById<TextView>(R.id.tvData)
         val etData = findViewById<TextView>(R.id.etData)

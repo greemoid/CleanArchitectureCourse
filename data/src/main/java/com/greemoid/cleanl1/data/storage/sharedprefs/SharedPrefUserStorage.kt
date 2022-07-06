@@ -17,7 +17,7 @@ class SharedPrefUserStorage(context: Context) : UserStorage {
 
     override fun save(user: User): Boolean {
         sharedPreferences.edit().putString(KEY_FIRSTNAME, user.firstName).apply()
-        sharedPreferences.edit().putString(KEY_FIRSTNAME, user.lastName).apply()
+        sharedPreferences.edit().putString(KEY_LASTNAME, user.lastName).apply()
         return true
     }
 
@@ -29,6 +29,5 @@ class SharedPrefUserStorage(context: Context) : UserStorage {
             firstName = firstName,
             lastName = lastName
         )
-
     }
 }
