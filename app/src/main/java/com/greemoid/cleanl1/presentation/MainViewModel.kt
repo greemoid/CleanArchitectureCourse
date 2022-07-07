@@ -13,11 +13,13 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val getUserName: GetUserName,
-    private val saveUserName: SaveUserName
+    private val saveUserName: SaveUserName,
 ) : ViewModel() {
 
     private val _result = MutableLiveData<String>()
     val result: LiveData<String> = _result
+
+
     fun save(text: String) {
         val param = SaveUserNameParams(name = text)
         _result.value = saveUserName.execute(param = param).toString()
