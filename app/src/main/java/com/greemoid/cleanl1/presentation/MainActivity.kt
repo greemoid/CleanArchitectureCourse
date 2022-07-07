@@ -7,22 +7,30 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.greemoid.cleanl1.R
+import com.greemoid.cleanl1.app.App
 import com.greemoid.cleanl1.data.repositories.UserRepositoryImpl
 import com.greemoid.cleanl1.data.storage.UserStorage
 import com.greemoid.cleanl1.data.storage.sharedprefs.SharedPrefUserStorage
 import com.greemoid.cleanl1.domain.models.SaveUserNameParams
 import com.greemoid.cleanl1.domain.usecases.GetUserName
 import com.greemoid.cleanl1.domain.usecases.SaveUserName
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
+
     private lateinit var viewModel: MainViewModel
+
+    @Inject
+    private lateinit var viewModelFactory: MainViewModelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Log.d("VM", "Activity created")
-        viewModel = ViewModelProvider(this, MainViewModelFactory(this))
+
+        (applicationContext as App).appComponent.inject(this)
+
+        viewModel = ViewModelProvider(this, viewModelFactory)
             .get(MainViewModel::class.java)
 
         val tvData = findViewById<TextView>(R.id.tvData)
