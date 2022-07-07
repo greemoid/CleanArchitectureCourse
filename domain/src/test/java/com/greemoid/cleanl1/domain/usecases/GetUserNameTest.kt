@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test
 import org.mockito.Mockito
 import org.mockito.kotlin.mock
 
-//todo push to git with mockito
+
 
 class GetUserNameTest {
 
