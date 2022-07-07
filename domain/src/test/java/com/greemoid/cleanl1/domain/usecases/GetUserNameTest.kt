@@ -1,19 +1,26 @@
 package com.greemoid.cleanl1.domain.usecases
 
-import com.greemoid.cleanl1.domain.models.SaveUserNameParams
+
 import com.greemoid.cleanl1.domain.models.UserName
 import com.greemoid.cleanl1.domain.repositories.UserRepository
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
+import org.mockito.Mockito
+import org.mockito.kotlin.mock
 
+//todo push to git with mockito
 
 class GetUserNameTest {
+
+    private val userRepository = mock<UserRepository>()
 
     @Test
     fun `should return the same data as in repository`() {
 
-        val testRepository = TestRepository()
-        val useCase = GetUserName(userRepository = testRepository)
+        val testUserName = UserName(firstName = "first name", lastName = "last name")
+
+        Mockito.`when`(userRepository.getName()).thenReturn(testUserName)
+        val useCase = GetUserName(userRepository = userRepository)
         val actual = useCase.execute()
         val excepted = UserName(firstName = "first name", lastName = "last name")
         Assertions.assertEquals(excepted, actual)
@@ -23,13 +30,3 @@ class GetUserNameTest {
 }
 
 
-class TestRepository() : UserRepository {
-    override fun saveName(saveParam: SaveUserNameParams): Boolean {
-        TODO("Not yet implemented")
-    }
-
-    override fun getName(): UserName {
-        return UserName(firstName = "first name", lastName = "last name")
-    }
-
-}
