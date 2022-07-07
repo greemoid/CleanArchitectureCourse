@@ -1,6 +1,6 @@
 package com.greemoid.cleanl1.domain.models
 
-class UserName (
+data class UserName (
     val firstName: String,
     val lastName: String
         )
