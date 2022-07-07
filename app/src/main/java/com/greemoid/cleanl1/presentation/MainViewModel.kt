@@ -7,8 +7,11 @@ import androidx.lifecycle.ViewModel
 import com.greemoid.cleanl1.domain.models.SaveUserNameParams
 import com.greemoid.cleanl1.domain.usecases.GetUserName
 import com.greemoid.cleanl1.domain.usecases.SaveUserName
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class MainViewModel(
+@HiltViewModel
+class MainViewModel @Inject constructor(
     private val getUserName: GetUserName,
     private val saveUserName: SaveUserName
 ) : ViewModel() {

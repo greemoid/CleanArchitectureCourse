@@ -4,26 +4,19 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.activity.viewModels
 import com.greemoid.cleanl1.R
-import com.greemoid.cleanl1.data.repositories.UserRepositoryImpl
-import com.greemoid.cleanl1.data.storage.UserStorage
-import com.greemoid.cleanl1.data.storage.sharedprefs.SharedPrefUserStorage
-import com.greemoid.cleanl1.domain.models.SaveUserNameParams
-import com.greemoid.cleanl1.domain.usecases.GetUserName
-import com.greemoid.cleanl1.domain.usecases.SaveUserName
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: MainViewModel
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Log.d("VM", "Activity created")
-        viewModel = ViewModelProvider(this, MainViewModelFactory(this))
-            .get(MainViewModel::class.java)
 
         val tvData = findViewById<TextView>(R.id.tvData)
         val etData = findViewById<TextView>(R.id.etData)
